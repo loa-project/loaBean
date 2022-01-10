@@ -1,2 +1,2 @@
-# loaBean
+# LoaBean
 LostArk
