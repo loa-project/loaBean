@@ -12,17 +12,20 @@ scrapingResult = {
     'sell': ''
 }
  
-function getData() {
-    request("https://finance.naver.com/marketindex/exchangeDailyQuote.nhn", function (err, res, body) {
-        const $ = cheerio.load(body);
-        const bodyList = $(".tbl_exchange tbody tr").map(function (i, element) {
-            scrapingResult['date'] = String($(element).find('td:nth-of-type(1)').text());
-            scrapingResult['the_basic_rate'] =  String($(element).find('td:nth-of-type(2)').text());
-            scrapingResult['buy'] =  String($(element).find('td:nth-of-type(4)').text());
-            scrapingResult['sell'] =  String($(element).find('td:nth-of-type(5)').text());
- 
-            console.log(scrapingResult)
+async function getData(userName) {
+    const url = "https://lostark.game.onstove.com/Profile/Character/"+encodeURIComponent(userName);
+    request(url, function (err, res, body) {
+        const $ = cheerio.load(String(body));
+        $(".level-info2__expedition span").map(function (i, element) {
+            itemlevel = String($(element).text());
+            if(itemlevel[0] === 'L') scrapingResult['itemlevel'] = itemlevel;
         });
+        $(".level-info__expedition span").map(function (i, element) {
+            ulevel = String($(element).text());
+            if(ulevel[0] === 'L') scrapingResult['ulevel'] = ulevel;
+        });
+        console.log(scrapingResult+"!?");
+        return scrapingResult;
     });
 }
 
@@ -33,13 +36,15 @@ router.get("/", (req,res) => {
 //*****************
 //getData를 응용해서 getUserList로 받아온 search정보로 크롤링 할 예정!!
 router.post("/getUserList", async(req,res) => {
+    var userInfo;
     try {
-    console.log(req.body.search);
-    res.send("hi");
+        getData(req.body.search).then((resp) => {
+            console.log(resp+"!@!#");
+        });
     }
     catch {
         res.json({ message: false });
     }
-    getData();
+    res.json({ message: true });
 });
 module.exports = router;
