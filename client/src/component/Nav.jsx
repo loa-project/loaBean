@@ -58,10 +58,10 @@ class Nav extends Component{
                    <a href="/" className="logo"><img src={logoImg} style={{width:"200px", height:"58px"}}/></a></li>
                <li><a href="">이것은 그냥</a></li>
                <li>
-                   <a className="test-menu" href="">테스트용도</a>
+                   <a className="test-menu" href="/cardsimul">도구</a>
                     <ul className="test-sub">
-                        <li><a href="">로하는</a></li>
-                        <li><a href="">겁니다</a></li>
+                        <li><a href="/cardsimul">세구빛 계산기</a></li>
+                        <li><a href="">제련 최적화 계산기</a></li>
                     </ul>
                </li>
                <li><a href="">오규석</a></li>
