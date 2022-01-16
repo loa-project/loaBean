@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { Component, useState } from 'react';
 import { Button, Form } from "react-bootstrap";
+import { useHistory } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
-
 class SearchForm extends Component {
     state = {
         search:"", search_cookie:""
@@ -18,6 +19,8 @@ class SearchForm extends Component {
         this.setState({search: event.target.value});
     }
     getUserList = () => {
+        window.location.href = "/userinfo/" + this.state.search_cookie;
+        /*
         let params = {
             headers:headers,
             search:this.state.search_cookie
@@ -25,8 +28,11 @@ class SearchForm extends Component {
         axios
         .post('api/getUserList', params)
         .then((res) => {
-          console.log(res);
+            this.props.history.push('/userinfo',res.deta.userInfo);
+          //res.data.userInfo 데이터를 쓰면됨
+          //이거는 검색 펑션이므로 이따 뒤에서 사용
         });
+        */
     }
     render() {
         return(
