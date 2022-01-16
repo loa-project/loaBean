@@ -1,6 +1,17 @@
 const express = require("express");
-const app = express();
 const test = require("./router/test");
+const app = express();
+const cors = require("cors");
+
+const corsOptions = {
+    origin: true,
+    credentials: true
+};
+
+app.use(cors(corsOptions));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api",test);
 
