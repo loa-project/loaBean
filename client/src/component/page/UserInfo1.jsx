@@ -31,6 +31,7 @@ class UserInfo1 extends Component {
         if(this.state.searchState === "TRUE") {
             return(
                 <div>
+                    <br/><br/><br/><br/><br/>
                     {this.props.match.params.userName}
                     {this.state.userInfo['ulevel']}
                 </div>
@@ -39,6 +40,7 @@ class UserInfo1 extends Component {
         else if(this.state.searchState === "FALSE") {
             return(
                 <div>
+                    <br/><br/><br/><br/><br/>
                     그런사람 없습니다.
                 </div>
             );
@@ -46,6 +48,7 @@ class UserInfo1 extends Component {
         else {
             return(
                 <div>
+                    <br/><br/><br/><br/><br/>
                     검색중..
                 </div>
             );

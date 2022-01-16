@@ -1,0 +1,173 @@
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+}
+.nav-bar li {
+    flex: 1;
+    text-align: center;
+    background-color:silver;
+    font-size: 25px;
+    height: 45px;
+    cursor: pointer;
+    line-height: 45px;
+    transition: all 0.5s;
+}
+.nav-bar li:hover {
+    background-color: dimgray;
+}
+.nav-bar li:hover a {
+    color: white;
+}
+
+.nav-bar li:hover .active {
+    color: white;
+}
+.nav-bar li a{
+    text-decoration: none;
+    font-family: 'Jua', sans-serif;
+    color: black;
+}
+
+.active {
+    text-decoration: none;
+    color: black;
+    padding: 6px;
+    border-width: 0px 0px 3px 0px;
+    border-style: solid;
+}
+
+@media screen and (max-width: 700px){
+    .nav-bar li {
+        font-size: 18px;
+    }
+}
+/* 위에는 이전 코드 */
+
+#test-nav, #test-nav ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+#test-nav {
+    display:flex;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-between;
+    clear: both;
+    font-size: 18px;
+    height: 58px;
+    padding: 0 0 0 9px;
+    position: fixed;
+    width:100%;
+    background-color: #414151;
+}
+#test-nav ul {
+    background-color: #222;
+    border:1px solid #222;
+    border-radius: 0 5px 5px 5px;
+    border-width: 0 1px 1px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+    left: -9999px;
+    overflow: hidden;
+    position: absolute;
+    top: -9999px;
+    z-index: 2;
+ 
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+ 
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+ 
+    -moz-transition: -moz-transform 0.1s linear;
+    -ms-transition: -ms-transform 0.1s linear;
+    -o-transition: -o-transform 0.1s linear;
+    -webkit-transition: -webkit-transform 0.1s linear;
+    transition: transform 0.1s linear;
+}
+
+#test-nav li {
+    float: left;
+    position: relative;
+}
+
+#test-nav li a:not(.logo, .search) {
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-weight: normal;
+    height: 30px;
+    padding: 16px 20px 0;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #000000;
+}
+#test-nav li:hover > a {
+    color: #00B4FF;
+}
+#test-nav li:hover:not(.logo, .search), #test-nav a:focus:not(.logo, .search), #test-nav a:hover:not(.logo, .search), #test-nav a:active:not(.logo, .search) {
+    background: none repeat scroll 0 0 #121212;
+    outline: 0 none;
+}
+#test-nav li:hover ul.test-sub {
+    left: 0;
+    top: 53px;
+    width: 180px;
+ 
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+}
+#test-nav ul li {
+    background: none;
+    width: 100%;
+}
+#test-nav ul li a {
+    float: none;
+}
+#test-nav ul li:hover > a {
+    background-color: #121212;
+    color: #00B4FF;
+}
+#tesst {
+    height: 16px;
+    left: 13px;
+    position: absolute;
+    top: 0px;
+    width: 64px;
+ 
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+#tesst:hover {
+    -moz-transition-duration: 3000s;
+    -ms-transition-duration: 3000s;
+    -o-transition-duration: 3000s;
+    -webkit-transition-duration: 3000s;
+    transition-duration: 3000s;
+}
+#test-nav li:nth-child(1):hover ~ #tesst {
+    left: 13px;
+}
+#test-nav li:nth-child(2):hover ~ #tesst {
+    left: 90px;
+}
+#test-nav li:nth-child(3):hover ~ #tesst {
+    left: 170px;
+}
