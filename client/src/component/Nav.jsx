@@ -1,11 +1,9 @@
 import axios from 'axios';
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Button, Form } from "react-bootstrap";
-import { useHistory } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+import './css/nav.css';
+import logoImg from '../img/component/Main/testLogo.png';
 
-axios.defaults.withCredentials = true;
-const headers = { withCredentials: true };
 class SearchForm extends Component {
     state = {
         search:"", search_cookie:""
@@ -20,21 +18,17 @@ class SearchForm extends Component {
     }
     getUserList = () => {
         window.location.href = "/userinfo/" + this.state.search_cookie;
-        /*
-        let params = {
-            headers:headers,
-            search:this.state.search_cookie
-        }
-        axios
-        .post('api/getUserList', params)
-        .then((res) => {
-            this.props.history.push('/userinfo',res.deta.userInfo);
-          //res.data.userInfo 데이터를 쓰면됨
-          //이거는 검색 펑션이므로 이따 뒤에서 사용
-        });
-        */
     }
     render() {
+        const searchStyle = {
+            marginTop:"10px",
+            height:"40px"
+        }
+        const buttonStyle = {
+            marginLeft:"5px",
+            marginRight:"20px",
+            height:"40px"
+        }
         return(
             <Form>
             <Form.Control
@@ -42,12 +36,14 @@ class SearchForm extends Component {
             maxLength="50"
             placeholder="검색어 입력"
             onChange={this.onSearchChange}
+            style={searchStyle}
             />
             <Button
             type="button"
             onClick={this.onSearch}
+            style={buttonStyle}
             >
-              <b>글 검색</b>
+              <b>검색</b>
             </Button>
         </Form>
         );
@@ -56,21 +52,22 @@ class SearchForm extends Component {
 
 class Nav extends Component{
     render() {
-        const navStyle = {
-            backgroundColor:'red'
-        }
         return (
-            <div style={navStyle}>
-                안녕!
-                <table>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td><SearchForm/></td>
-                    </tr>
-                </table>
-            </div>
+            <ul id="test-nav">
+               <li>
+                   <a href="/" className="logo"><img src={logoImg} style={{width:"200px", height:"58px"}}/></a></li>
+               <li><a href="">이것은 그냥</a></li>
+               <li>
+                   <a className="test-menu" href="">테스트용도</a>
+                    <ul className="test-sub">
+                        <li><a href="">로하는</a></li>
+                        <li><a href="">겁니다</a></li>
+                    </ul>
+               </li>
+               <li><a href="">오규석</a></li>
+               <li className="search"><SearchForm/></li>
+               <div id="tesst"></div>
+           </ul>
         );
     }
 }
