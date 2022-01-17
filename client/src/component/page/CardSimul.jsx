@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 
 class CardInfoForm extends Component {
     state = {
-        ninav:0, cadan:0, wei:0, bahun:0, silian:0, ajena:0, shandi:0, selectpack:0,resultFlag: false, price: 0
+        ninav:0, cadan:0, wei:0, bahun:0, silian:0, ajena:0, shandi:0, selectpack:0,resultFlag: false, price: 0, min: 0, max: 0
     }
     componentDidMount() {
         this.setState({ninav:0, cadan:0, wei:0, bahun:0, silian:0, ajena:0, shandi:0, selectpack:0,resultFlag: false});
@@ -61,11 +61,13 @@ class CardInfoForm extends Component {
     }
     cardSimulation = (arg) => {
         //1,1,2,3,4,5
+        var minPack=99999;
+        var maxPack=0;
         var ninav=this.state.ninav, cadan=this.state.cadan, wei=this.state.wei,
         bahun=this.state.bahun, ajena=this.state.ajena, silian=this.state.silian,
         selectpack=this.state.selectpack, shandi=this.state.shandi;
         var buySum=0;
-        for(var ns=0;ns<1000;ns++) {
+        for(var ns=0;ns<10000;ns++) {
             var buyPack=0;
             var stat = [ninav,cadan,wei,bahun,silian,ajena,shandi,selectpack];
             while(1) {
@@ -85,9 +87,11 @@ class CardInfoForm extends Component {
                 }
             }
             buySum+=buyPack;
+            if(buyPack<minPack) minPack=buyPack
+            if(buyPack>maxPack) maxPack=buyPack;
         }
-        var res = Math.floor(buySum/1000);
-        this.setState({resultFlag:true, price: res});
+        var res = Math.floor(buySum/10000);
+        this.setState({min:minPack, max:maxPack, resultFlag:true, price: res});
     }
     getGak= (num) => {
         var res = {
@@ -225,6 +229,7 @@ class CardInfoForm extends Component {
                 당신은 평균적으로 {this.state.price} 번 전설/희귀 카드팩을 구매해야 합니다.<br/>
                 가격은 {this.state.price * 230} 크리스탈({Math.floor(this.state.price * 230 * 27.5)}원)이 소모되며, 
                 시간은 {Math.floor(this.state.price/2)}~{this.state.price}일이 소요됩니다.<br/>
+                가장 운이 좋은 경우 {this.state.min} 회, 가장 운이 나쁜 경우는 {this.state.max}회 구매하였습니다.<br/>
                 이는 전설/희귀 카드팩 매수만으로 얻는 카드를 통한 시뮬레이션이므로 실제로는 더 적은 비용이 소모될 것입니다.
             </div>
         );
@@ -243,6 +248,7 @@ class CardSimul extends Component {
                 세구빛 계산기 입니다.<br/>
                 본인이 가지고 계신 세구빛 카드의 숫자와 전설 선택 카드팩 숫자를 알맞게 입력하시면<br/>
                 드는 평균 비용을 계산해줍니다.<br/>
+                10000번의 시뮬레이션에서 나온 결과가 출력됩니다.<br/>
                 </p>
                 <CardInfoForm/>
             </div>
