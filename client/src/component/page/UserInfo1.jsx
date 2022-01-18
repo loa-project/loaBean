@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
@@ -32,8 +32,15 @@ class UserInfo1 extends Component {
             return(
                 <div>
                     <br/><br/><br/><br/><br/>
-                    {this.props.match.params.userName}
-                    {this.state.userInfo['ulevel']}
+                    서버:{this.state.userInfo['server']}<br/>
+                    이름: {this.props.match.params.userName}<br/>
+                    원정대 레벨:{this.state.userInfo['ulevel']}<br/>
+                    전투 레벨:{this.state.userInfo['flevel']}<br/>
+                    아이템 레벨:{this.state.userInfo['itemlevel']}<br/>
+                    pvp:{this.state.userInfo['pvp']}<br/>
+                    칭호:{this.state.userInfo['degree']}<br/>
+                    길드:{this.state.userInfo['guild']}<br/>
+                    영지:{this.state.userInfo['wlevel']} {this.state.userInfo['wisdom_name']}<br/>
                 </div>
             );
         }
