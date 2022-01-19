@@ -7,7 +7,7 @@ import CardSimul from "./page/CardSimul";
 class Body extends Component {
     render() {
         return(
-            <div>
+            <div className="body-box">
                 <Route exact path="/" component={MainPage}/>
                 <Route exact path="/userinfo/:userName" component={UserInfo}/>
                 <Route exact path="/cardsimul" component={CardSimul}/>
