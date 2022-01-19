@@ -143,9 +143,8 @@ class CardInfoForm extends Component {
     }
     render() {
         const tableStyle = {
-            border: '1px solid white',
             margin:'auto',
-            backgroundColor: "#999999"
+            border: 'solid 2px white'
         }
         const searchStyle = {
             width:'50px',
@@ -267,16 +266,18 @@ class CardInfoForm extends Component {
                         </tr>
                     </tbody>
                 </table>
+                <br/><br/>
             </Form>
         );
         else return(
             <div>
-                <br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><b>
                 당신은 평균적으로 {this.state.price} 번 전설/희귀 카드팩을 구매해야 합니다.<br/>
                 가격은 {this.state.price * 230} 크리스탈({Math.floor(this.state.price * 230 * 27.5)}원)이 소모되며, 
                 시간은 {Math.floor(this.state.price/2)}~{this.state.price}일이 소요됩니다.<br/>
                 가장 운이 좋은 경우 {this.state.min} 회, 가장 운이 나쁜 경우는 {this.state.max}회 구매하였습니다.<br/>
                 이는 전설/희귀 카드팩 매수만으로 얻는 카드를 통한 시뮬레이션이므로 실제로는 더 적은 비용이 소모될 것입니다.
+                </b><br/><br/>
             </div>
         );
     }
@@ -289,20 +290,26 @@ class CardSimul extends Component {
     render() {
         const exStyle = {
             textAlign:'center',
-            border:'2px solid white',
+            border: '1px solid white',
+            backgroundColor: "#999999",
+            width:'60%',
+            margin:'auto',
         };
         return(
             <div>
+                <br/><br/><br/><br/><br/><br/>
                 <div style={exStyle}>
-                    <br/><br/><br/><br/><br/>
-                    <p>
-                    세구빛 계산기 입니다.<br/>
-                    본인이 가지고 계신 세구빛 카드의 숫자와 전설 선택 카드팩 숫자를 알맞게 입력하시면<br/>
-                    드는 평균 비용을 계산해줍니다.<br/>
-                    10000번의 시뮬레이션에서 나온 결과가 출력됩니다.<br/>
-                    </p>
+                    <div>
+                        <p>
+                        세구빛 계산기 입니다.<br/>
+                        본인이 가지고 계신 세구빛 카드의 숫자와 전설 선택 카드팩 숫자를 알맞게 입력하시면<br/>
+                        전설/희귀 카드팩 구매 시 평균 비용을 계산해줍니다.<br/>
+                        10000번의 시뮬레이션에서 나온 결과가 출력됩니다.<br/>
+                        <b style={{color:'red'}}>*개수는 0각이라도 있을경우 1장으로 계산해주세요(ex 1각+1=3장)*</b><br/>
+                        </p>
+                    </div>
+                    <CardInfoForm/>
                 </div>
-                <CardInfoForm/>
             </div>
         );
     }

@@ -61,10 +61,10 @@ class Nav extends Component{
                    <a className="test-menu" href="/cardsimul">도구</a>
                     <ul className="test-sub">
                         <li><a href="/cardsimul">세구빛 계산기</a></li>
-                        <li><a href="">제련 최적화 계산기</a></li>
+                        <li><a href="">재련 최적화 계산기</a></li>
                     </ul>
                </li>
-               <li><a href="">오규석</a></li>
+               <li><a href="">개발예정</a></li>
                <li className="search"><SearchForm/></li>
                <div id="tesst"></div>
            </ul>
