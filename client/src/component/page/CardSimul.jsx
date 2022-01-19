@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Form } from "react-bootstrap";
-
+import ninavCard from '../../img/component/page/CardSimul/ninav.png';
+import cadanCard from '../../img/component/page/CardSimul/cadan.png';
+import ajenaCard from '../../img/component/page/CardSimul/ajena.png';
+import bahunCard from '../../img/component/page/CardSimul/bahun.png';
+import silianCard from '../../img/component/page/CardSimul/silian.png';
+import weiCard from '../../img/component/page/CardSimul/wei.png';
+import shandiCard from '../../img/component/page/CardSimul/shandi.png';
+import selectpackCard from '../../img/component/page/CardSimul/selectpack.png';
+import '../css/cardSimul.css';
 class CardInfoForm extends Component {
     state = {
         ninav:0, cadan:0, wei:0, bahun:0, silian:0, ajena:0, shandi:0, selectpack:0,resultFlag: false, price: 0, min: 0, max: 0
@@ -134,8 +142,14 @@ class CardInfoForm extends Component {
         if(id==="selectpack") this.setState({selectpack: event.target.value});
     }
     render() {
+        const tableStyle = {
+            border: '1px solid white',
+            margin:'auto',
+            backgroundColor: "#999999"
+        }
         const searchStyle = {
-
+            width:'50px',
+            margin:'auto'
         }
         const buttonStyle = {
 
@@ -143,84 +157,116 @@ class CardInfoForm extends Component {
         if(!this.state.resultFlag)
         return(
             <Form>
-                니나브: <Form.Control
-                id="ninav"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                카단: <Form.Control
-                id="cadan"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                웨이: <Form.Control
-                id="wei"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                바훈투르: <Form.Control
-                id="bahun"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                실리안: <Form.Control
-                id="silian"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                아제나&이난나: <Form.Control
-                id="ajena"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                샨디: <Form.Control
-                id="shandi"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                전선팩: <Form.Control
-                id="selectpack"
-                type="search"
-                maxLength="5"
-                placeholder="숫자 입력"
-                onChange={this.onCardChange}
-                style={searchStyle}
-                /><br/>
-                <Button
-                type="button"
-                onClick={()=>this.cardSimulation(18)}
-                style={buttonStyle}
-                >
-                <b>18각 계산</b>
-                </Button>
-                <Button
-                type="button"
-                onClick={()=>this.cardSimulation(30)}
-                style={buttonStyle}
-                >
-                <b>30각 계산</b>
-                </Button>
+                <table style={tableStyle} className="cardTable">
+                    <thead>
+                        <tr>
+                            <td>니나브</td>
+                            <td>카단</td>
+                            <td>아제나&이난나</td>
+                            <td>바훈투르</td>
+                            <td>실리안</td>
+                            <td>샨디</td>
+                            <td>웨이</td>
+                            <td style={{fontSize:"15px"}}>전설 카드 선택팩</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src={ninavCard} /></td>
+                            <td><img src={cadanCard} /></td>
+                            <td><img src={ajenaCard} /></td>
+                            <td><img src={bahunCard} /></td>
+                            <td><img src={silianCard} /></td>
+                            <td><img src={shandiCard} /></td>
+                            <td><img src={weiCard} /></td>
+                            <td><img src={selectpackCard} style={{width:"100px"}}/></td>
+                        </tr>
+                        <tr>
+                            <td><Form.Control
+                                id="ninav"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="cadan"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="ajena"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="bahun"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="silian"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="shandi"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="wei"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                            <td><Form.Control
+                                id="selectpack"
+                                type="search"
+                                maxLength="2"
+                                placeholder="개수"
+                                onChange={this.onCardChange}
+                                style={searchStyle}
+                                /></td>
+                        </tr>
+                        <tr style={{height:"60px"}}>
+                            <td colSpan={2}></td>
+                            <td colSpan={2}><Button
+                                type="button"
+                                onClick={()=>this.cardSimulation(18)}
+                                style={buttonStyle}
+                                >
+                                <b>18각 계산</b>
+                                </Button></td>
+                            <td colSpan={2}><Button
+                            type="button"
+                            onClick={()=>this.cardSimulation(30)}
+                            style={buttonStyle}
+                            >
+                            <b>30각 계산</b>
+                            </Button></td>
+                            <td colSpan={2}></td>
+                        </tr>
+                    </tbody>
+                </table>
             </Form>
         );
         else return(
@@ -241,15 +287,21 @@ class CardSimul extends Component {
 
     };
     render() {
+        const exStyle = {
+            textAlign:'center',
+            border:'2px solid white',
+        };
         return(
             <div>
-                <br/><br/><br/><br/><br/>
-                <p>
-                세구빛 계산기 입니다.<br/>
-                본인이 가지고 계신 세구빛 카드의 숫자와 전설 선택 카드팩 숫자를 알맞게 입력하시면<br/>
-                드는 평균 비용을 계산해줍니다.<br/>
-                10000번의 시뮬레이션에서 나온 결과가 출력됩니다.<br/>
-                </p>
+                <div style={exStyle}>
+                    <br/><br/><br/><br/><br/>
+                    <p>
+                    세구빛 계산기 입니다.<br/>
+                    본인이 가지고 계신 세구빛 카드의 숫자와 전설 선택 카드팩 숫자를 알맞게 입력하시면<br/>
+                    드는 평균 비용을 계산해줍니다.<br/>
+                    10000번의 시뮬레이션에서 나온 결과가 출력됩니다.<br/>
+                    </p>
+                </div>
                 <CardInfoForm/>
             </div>
         );
